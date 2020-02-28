@@ -41,6 +41,7 @@ forsteKlikk = true; // Man er på første klikk når siden oppdateres
 function visCustom() {
     document.getElementById("customSettings").style.display = "flex";
     document.getElementById("startknapp").style.display = "initial";
+    document.getElementById("highscore").innerHTML = "";
 }
 
 // Når radiobutton custom ikke er markert vises inputfields
