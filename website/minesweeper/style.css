@@ -1,0 +1,88 @@
+/* Laget av Runar Saur Modahl, avsluttet 27.02.2020 */
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    margin: 0 auto;
+}
+
+#gamesection {
+    /* ikke lov å markere text i spillfeltet */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+span {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    font-size: 1.25em;
+    margin: 5px;
+}
+
+.ikkeOpnet {
+    background-color: darkgrey;
+    cursor: pointer;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-bottom: 3px solid #555;
+    border-right: 3px solid #555;
+    margin-bottom: -5px;
+}
+
+.opnet,
+.flagged,
+.💣 {
+    margin-bottom: -10px;
+}
+
+#customSettings,
+#spillModusForm {
+    display: flex;
+}
+
+input[type=number] {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+label {
+    width: 100%;
+}
+
+form {
+    margin: 10px;
+    font-size: 1.1em;
+}
+
+button {
+    background-color: #FF7E7A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+}
