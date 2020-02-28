@@ -20,12 +20,15 @@ var kart,
     tapt,
     resultat,
     intervall,
-    fontSizeEmoji;
+    fontSizeEmoji,
+    gameMode,
+    highscore;
 
 resultat = document.getElementById("resultat");
 gamesection = document.getElementById("gamesection");
+highscore = document.getElementById("highscore");
 
-breddeGameSection = 700;
+breddeGameSection = 800;
 document.getElementById("wrapper").style.maxWidth = breddeGameSection + "px";
 
 flagg = "🚩";
@@ -36,12 +39,15 @@ forsteKlikk = true; // Man er på første klikk når siden oppdateres
 
 // Når radiobutton custom er markert vises inputfields
 function visCustom() {
-    document.getElementById("customSettings").style.visibility = "visible";
+    document.getElementById("customSettings").style.display = "flex";
+    document.getElementById("startknapp").style.display = "initial";
 }
 
 // Når radiobutton custom ikke er markert vises inputfields
 function skjulCustom() {
-    document.getElementById("customSettings").style.visibility = "hidden";
+    document.getElementById("customSettings").style.display = "none";
+    document.getElementById("startknapp").style.display = "none";
+    startSpill();
 }
 
 function startSpill() {
@@ -50,10 +56,11 @@ function startSpill() {
 
     // Noen ting som må resettes hver gang man starter på nytt
     clearInterval(intervall);
-    document.getElementById("tid").innerHTML = "Tid: ";
+    document.getElementById("tid").innerHTML = "";
+    document.getElementById("bomberIgjen").innerHTML = "";
     resultat.innerHTML = "";
 
-    var gameMode = document.querySelector('input[name="gamemode"]:checked').value; // Henter gamemode
+    gameMode = document.querySelector('input[name="gamemode"]:checked').value; // Henter gamemode
     if (gameMode == "custom") {
         inputBredde = Number(document.getElementById("bredde").value);
 
@@ -99,8 +106,16 @@ function startSpill() {
     }
 
     createMap(inputBredde, inputHoyde, inputBomber); // Lag kartet
-    bomberIgjen(); // Oppdater antall bomber igjen
     gamesection.style.pointerEvents = "auto"; // Gjør det mulig å trykke i spilleområdet
+
+
+    if (gameMode === "custom") {
+        highscoreMode = `w${inputBredde}h${inputHoyde}b${inputBomber}`
+    } else {
+        highscoreMode = gameMode;
+    }
+    if (window.localStorage.getItem(highscoreMode) == undefined) return highscore.innerHTML = "";
+    highscore.innerHTML = `Highscore: ${window.localStorage.getItem(highscoreMode)}s`;
 }
 
 
@@ -180,7 +195,7 @@ function createMap(width, height, bombs) {
 }
 
 // Justere størrelsen til spillet når vinduet forandrer størrelse
-document.getElementsByTagName("body")[0].onresize = function () {
+document.getElementsByTagName("body")[0].onresize = function() {
     var elems = document.getElementsByTagName("span");
     if (innerWidth < breddeGameSection) {
         storrelsePerRute = Math.floor(innerWidth / inputBredde) - 3;
@@ -201,12 +216,12 @@ document.getElementsByTagName("body")[0].onresize = function () {
 function eventListener() { // Looper gjennom alle elementene
     for (var i = 0; i < inputHoyde; i++) {
         for (var j = 0; j < inputBredde; j++) {
-            (function () {
+            (function() {
                 var element = document.getElementById(`y${i}x${j}`)
-                element.addEventListener("mousedown", function (e) {
+                element.addEventListener("mousedown", function(e) {
                     if (forsteKlikk) { // Hvis man trykker for første gang, lagres starttiden og timeren starter
                         startTid = Date.now();
-                        intervall = setInterval(function () {
+                        intervall = setInterval(function() {
                             document.getElementById("tid").innerHTML = `Tid: ${(Date.now()-startTid) / 1e3}s`
                         }, 1);
                     }
@@ -347,15 +362,15 @@ function bomberIgjen() {
 
 function stilOpnet(element) {
     if (element.classList.contains("1")) { // Gir ruter med tallet 1 farge
-        element.style.color = "red"
+        element.style.color = "#ff9cff";
     } else if (element.classList.contains("2")) { // Gir ruter med tallet 2 farge
-        element.style.color = "blue";
+        element.style.color = "#baffc9";
     } else if (element.classList.contains("3")) { // Gir ruter med tallet 3 farge
-        element.style.color = "green";
+        element.style.color = "#ffb3ba";
     } else if (element.classList.contains("4")) { // Gir ruter med tallet 4 farge
-        element.style.color = "purple";
+        element.style.color = "#82ffde";
     } else if (element.classList.contains("5")) { // Gir ruter med tallet 5 farge
-        element.style.color = "magenta";
+        element.style.color = "#9e9eff";
     } else if (element.classList.contains("6")) { // Gir ruter med tallet 6 farge
         element.style.color = "#cdff7d";
     } else if (element.classList.contains("7")) { // Gir ruter med tallet 7 farge
@@ -403,9 +418,15 @@ function gameOverSeier() {
     clearInterval(intervall); // Stopp intervallet
     document.getElementById("tid").innerHTML = `Tid: ${totalTid}s`;
     resultat.innerHTML = `Du vant med tiden ${totalTid} sekunder!`; // Oppdater tid-informasjon for bruker
+
+    // Highscore
+    if (window.localStorage.getItem(highscoreMode) == undefined || window.localStorage.getItem(highscoreMode) > totalTid) {
+        window.localStorage.setItem(highscoreMode, totalTid);
+        highscore.innerHTML = `Highscore: ${window.localStorage.getItem(highscoreMode)}s`;
+    }
 }
 
-document.addEventListener("keypress", function (e) {
+document.addEventListener("keypress", function(e) {
     if (e.key === 'Enter' || e.code == "KeyR") {
         startSpill();
     }
