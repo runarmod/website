@@ -5,27 +5,27 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="bomb.png">
-    <link rel="stylesheet" href="style.css" /> 
+    <link rel="stylesheet" href="style.css" />
     <title>Minesweeper</title>
 </head>
 
 <body>
     <div id="wrapper">
-        <h1>MINESWEEPER</h1>
         <form id="spillModusForm">
             <label><input type="radio" name="gamemode" value="beginner" onclick="skjulCustom()" /> Beginner</label>
             <label><input type="radio" name="gamemode" value="intermediate" onclick="skjulCustom()" /> Intermediate</label>
             <label><input type="radio" name="gamemode" value="expert" onclick="skjulCustom()" /> Expert</label>
             <label><input type="radio" name="gamemode" value="custom" onclick="visCustom()" /> Custom</label>
         </form>
-        <div id="customSettings" style="visibility: hidden;">
-            <input type="number" name="bredde" id="bredde" placeholder="Bredde" min="1" max="50" />
-            <input type="number" name="hoyde" id="hoyde" placeholder="Høyde" min="1" max="30" />
-            <input type="number" name="bomber" id="bomber" placeholder="Bomber" min="0" max="300" />
+        <div id="customSettings" style="display: none;">
+            <input type="number" name="bredde" id="bredde" placeholder="Bredde" min="4" max="50" />
+            <input type="number" name="hoyde" id="hoyde" placeholder="Høyde" min="4" max="30" />
+            <input type="number" name="bomber" id="bomber" placeholder="Bomber" min="1" max="300" />
         </div>
-        <button onclick="startSpill()">Start</button>
-        <p id="tid">Tid: </p>
-        <p id="bomberIgjen">Bomber igjen: </p>
+        <button id="startknapp" onclick="startSpill()" style="display: none;">Start</button>
+        <p id="tid"></p>
+        <p id="highscore"></p>
+        <p id="bomberIgjen"></p>
         <h2 id="resultat"></h2>
 
         <div id="gamesection"></div>
