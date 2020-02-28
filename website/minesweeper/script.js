@@ -404,3 +404,9 @@ function gameOverSeier() {
     document.getElementById("tid").innerHTML = `Tid: ${totalTid}s`;
     resultat.innerHTML = `Du vant med tiden ${totalTid} sekunder!`; // Oppdater tid-informasjon for bruker
 }
+
+document.addEventListener("keypress", function (e) {
+    if (e.key === 'Enter' || e.code == "KeyR") {
+        startSpill();
+    }
+});
