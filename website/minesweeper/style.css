@@ -91,3 +91,7 @@ button:hover {
     background-color: rgb(255, 164, 161);
     cursor: pointer;
 }
+
+button:focus {
+    outline: none;
+}
