@@ -319,7 +319,7 @@ function loopGjennomKart() {
             if (document.getElementById(`y${i}x${j}`).classList.contains("0")) {
 
                 // Hvis du heller vil ha tallet 0 i spillfeltet enn en tom rute, fjern eller kommenter bort neste linje
-                // document.getElementById(`y${i}x${j}`).innerHTML = "";
+                document.getElementById(`y${i}x${j}`).innerHTML = "";
 
                 if (i > 0) { // Hvis ikke øverste rad
                     if (document.getElementById(`y${i - 1}x${j}`).classList.contains("ikkeOpnet")) snu(i - 1, j); // Snu ruta over
