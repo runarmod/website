@@ -432,7 +432,7 @@ function gameOverSeier() {
 }
 
 document.addEventListener("keypress", function(e) {
-    if (e.key === 'Enter' || e.code == "KeyR") {
+    if (e.key === 'Enter' || e.code == "KeyR" || e.code == "Space") {
         startSpill();
     }
 });
