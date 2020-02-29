@@ -39,9 +39,13 @@ forsteKlikk = true; // Man er på første klikk når siden oppdateres
 
 // Når radiobutton custom er markert vises inputfields
 function visCustom() {
+    clearInterval(intervall);
     document.getElementById("customSettings").style.display = "flex";
     document.getElementById("startknapp").style.display = "initial";
     document.getElementById("highscore").innerHTML = "";
+    document.getElementById("tid").innerHTML = "";
+    document.getElementById("bomberIgjen").innerHTML = "";
+    document.getElementById("gamesection").innerHTML = "";
 }
 
 // Når radiobutton custom ikke er markert vises inputfields
