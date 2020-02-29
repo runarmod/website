@@ -431,6 +431,7 @@ function gameOverSeier() {
     }
 }
 
+// Restart om man trykker på Enter, R eller Space
 document.addEventListener("keypress", function(e) {
     if (e.key === 'Enter' || e.code == "KeyR" || e.code == "Space") {
         startSpill();
