@@ -1,4 +1,4 @@
-// Laget av Runar Saur Modahl, avsluttet 27.02.2020
+// Laget av Runar Saur Modahl
 
 // Definerer alle variabler som er sjekke å ha globale
 var kart,
