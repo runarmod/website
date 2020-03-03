@@ -46,6 +46,7 @@ function visCustom() {
     document.getElementById("tid").innerHTML = "";
     document.getElementById("bomberIgjen").innerHTML = "";
     document.getElementById("gamesection").innerHTML = "";
+    document.getElementById("resultat").innerHTML = "";
 }
 
 // Når radiobutton custom ikke er markert vises inputfields
