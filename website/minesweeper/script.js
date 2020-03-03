@@ -368,21 +368,21 @@ function bomberIgjen() {
 
 function stilOpnet(element) {
     if (element.classList.contains("1")) { // Gir ruter med tallet 1 farge
-        element.style.color = "#ff9cff";
+        element.style.color = "blue";
     } else if (element.classList.contains("2")) { // Gir ruter med tallet 2 farge
-        element.style.color = "#baffc9";
+        element.style.color = "green";
     } else if (element.classList.contains("3")) { // Gir ruter med tallet 3 farge
-        element.style.color = "#ffb3ba";
+        element.style.color = "red";
     } else if (element.classList.contains("4")) { // Gir ruter med tallet 4 farge
-        element.style.color = "#82ffde";
+        element.style.color = "purple";
     } else if (element.classList.contains("5")) { // Gir ruter med tallet 5 farge
-        element.style.color = "#9e9eff";
+        element.style.color = "black";
     } else if (element.classList.contains("6")) { // Gir ruter med tallet 6 farge
-        element.style.color = "#cdff7d";
+        element.style.color = "maroon";
     } else if (element.classList.contains("7")) { // Gir ruter med tallet 7 farge
-        element.style.color = "#cb87ff";
+        element.style.color = "gray";
     } else if (element.classList.contains("8")) { // Gir ruter med tallet 8 farge
-        element.style.color = "#ffdfba";
+        element.style.color = "turquoise";
     }
 }
 
