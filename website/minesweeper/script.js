@@ -107,7 +107,7 @@ function startSpill() {
     }
 
     // Ikke flere bomber enn ruter
-    if (inputBomber >= inputBredde * inputHoyde / 2) {
+    if (inputBomber > inputBredde * inputHoyde / 2) {
         return alert("Du kan ikke ha flere bomber en halvparten av antall ruter");
     }
 
